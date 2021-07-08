@@ -9,7 +9,7 @@ class SiteController extends Controller
 {
     public function index(Plan $plan)
     {
-        $plans = $plan->with('features')->get();
+        $plans = $plan->with('features')->orderBy('price','asc')->get();
 
         return view('home.index', compact('plans'));
     }
