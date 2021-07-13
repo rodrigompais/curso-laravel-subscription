@@ -15,18 +15,22 @@ class SubscriptionController extends Controller
 
     public function index()
     {
+        //dd(session('plan'));
         if (auth()->user()->subscribed('default'))
             return redirect()->route('subscriptions.premium');
 
         return view('subscriptions.index', [
             'intent' => auth()->user()->createSetupIntent(),
+            'plan' => session('plan')
         ]);
     }
 
     public function store(Request $request)
     {
+        $plan = session('plan');
+
         $request->user()
-            ->newSubscription('default', 'price_1J77buCavdZfX27kSOvhCRpW')
+            ->newSubscription('default', $plan->stripe_id)
             ->create($request->token);
 
         return redirect()->route('subscriptions.premium');

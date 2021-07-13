@@ -22,6 +22,7 @@ Route::post('subscriptions/store', [SubscriptionController::class, 'store'])->na
 Route::get('subscriptions/checkout', [SubscriptionController::class, 'index'])->name('subscriptions.checkout');
 Route::get('subscriptions/premium', [SubscriptionController::class, 'premium'])->name('subscriptions.premium')->middleware('subscribed'); 
 
+Route::get('/assinar/{url}', [SiteController::class, 'createSessionPlan'])->name('choice.plan');
 Route::get('/', [SiteController::class,'index'])->name('site.home');
 
 Route::get('/dashboard', function () {
