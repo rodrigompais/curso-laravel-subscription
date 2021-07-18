@@ -24,10 +24,10 @@ class ContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'      => ['requerid', 'min:3', 'max:100', 'string'],
-            'subject'   => ['requerid', 'max:200'],
-            'email'     => ['requerid', 'max:200', 'email'],
-            'message'   => ['requerid', 'max:200'],
+            'name'      => ['required', 'min:3', 'max:100', 'string'],
+            'subject'   => ['required', 'max:200'],
+            'email'     => ['required', 'max:200', 'email'],
+            'message'   => ['required', 'max:200'],
         ];
     }
 }
